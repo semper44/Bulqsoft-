@@ -16,7 +16,7 @@ window.addEventListener('load', function() {
     let isVisible = true
 
     console.log(tasks);
-    if(tasks.length > 0){
+    if(tasks){
         tasks.slice(-5).map((task)=>{
             let p = this.document.createElement("p")
             p.textContent = task.title
