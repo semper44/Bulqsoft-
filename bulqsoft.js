@@ -9,7 +9,7 @@ window.addEventListener('load', function() {
     const restartButton = document.querySelector('#restart-button')
     const apiUrl = 'https://jsonplaceholder.typicode.com/todos'
     let batchSize = 10
-    const tasks = JSON.parse(localStorage.getItem('batch'));
+    let tasks = JSON.parse(localStorage.getItem('batch'));
     let completedTasks = parseInt(localStorage.getItem('completedTasks')) || 0;
     let totalTasks = 0
     let isCancelled = false
