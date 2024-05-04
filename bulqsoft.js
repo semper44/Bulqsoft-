@@ -15,11 +15,16 @@ window.addEventListener('load', function() {
     let isCancelled = false
     let isVisible = true
 
-    tasks.slice(-5).map((task)=>{
-        let p = this.document.createElement("p")
-        p.textContent = task.title
-        storedTask.append(p)
-    })
+    console.log(tasks);
+    if(tasks.length > 0){
+        tasks.slice(-5).map((task)=>{
+            let p = this.document.createElement("p")
+            p.textContent = task.title
+            storedTask.append(p)
+        })
+    }else{
+        tasks = "Nothing to show"
+    }
 
     seeStoredTask.onclick = ()=>{
         if(!isVisible){
