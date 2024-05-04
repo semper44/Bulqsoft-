@@ -4,12 +4,33 @@ window.addEventListener('load', function() {
     const progressText = document.querySelector('#progress-text')
     const progressPercentage = document.querySelector('#progress-percentage')
     const cancelButton = document.querySelector('#cancel-button')
+    const storedTask = document.querySelector('#stored-task')
+    const seeStoredTask = document.querySelector('#see-stored-task')
     const restartButton = document.querySelector('#restart-button')
     const apiUrl = 'https://jsonplaceholder.typicode.com/todos'
     let batchSize = 10
+    const tasks = JSON.parse(localStorage.getItem('batch'));
     let completedTasks = parseInt(localStorage.getItem('completedTasks')) || 0;
     let totalTasks = 0
     let isCancelled = false
+    let isVisible = true
+
+    tasks.slice(-5).map((task)=>{
+        let p = this.document.createElement("p")
+        p.textContent = task.title
+        storedTask.append(p)
+    })
+
+    seeStoredTask.onclick = ()=>{
+        if(!isVisible){
+            storedTask.style.opacity = 0
+            isVisible =true
+        }else{
+            storedTask.style.opacity = 1
+            isVisible =false
+        }
+    }
+
 
     async function importTasks() {
         restartButton.disabled = true
@@ -21,10 +42,8 @@ window.addEventListener('load', function() {
             if(!response.ok){
                 throw new Error('Network response was not ok');
             }
-            console.log(totalTasks, "b4");
             const tasks = await response.json()
             totalTasks = tasks.length
-            console.log(totalTasks, "after");
 
             for(let i = 0; i < totalTasks; i += batchSize){
                 if (isCancelled){
@@ -34,6 +53,7 @@ window.addEventListener('load', function() {
                 }
 
                 const batch = tasks.slice(i, i + batchSize)
+                localStorage.setItem("batch", JSON.stringify(batch))
                 await processBatch(batch);
                 completedTasks += batch.length
                 updateProgress();
@@ -60,7 +80,16 @@ window.addEventListener('load', function() {
 
             }
         }catch(error){
-            console.log("error");
+            Toastify({
+                text: error,
+                duration: 3000, 
+                close: true,
+                gravity: "top", 
+                position: "right",
+                backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)",
+                stopOnFocus: true, 
+            }).showToast();
+           
             Toastify({
                 text: `Error importing tasks:${error}`,
                 duration: 3000, 
@@ -119,7 +148,6 @@ window.addEventListener('load', function() {
     }
 
     function refreshTask(){
-        console.log("hey");
         localStorage.removeItem("completed")
         localStorage.removeItem("completedTasks")
         completedTasks = parseInt(localStorage.getItem('completedTasks')) || 0;

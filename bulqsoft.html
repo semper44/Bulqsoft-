@@ -8,7 +8,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastify-js/1.12.0/toastify.css" integrity="sha512-kT0v1BxcibEO2Yc+6Z3W1gNsN+2cZ/U6uITqHhIJl8SAvt9vpO8llugdCPXA7cCnp8G1xbuSqHNMRaR3Zlz9yA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body class="bg-gray-100">
-    <div class="container w-full h-screen flex justify-center items-center">
+    <h1 class=" ml-8 font-bold mt-4">Stored Tasks</h1>
+    <p id="see-stored-task" class="ml-8 cursor-pointer text-sm my-4 undeline text-blue-300">See stored tasks</p>
+    <div id="stored-task" class="flex gap-4 ml-8 mr-4 opacity-0"></div>
+    <div class="container w-full flex justify-center items-center mt-8">
         <div class="w-3/4 bg-white p-8 rounded-lg shadow-lg">
             <p class="text-center" id="progress-text">In Progress</p>
             <div class="relative h-8 bg-gray-200 rounded-full">
