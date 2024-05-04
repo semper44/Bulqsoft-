@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Import Task</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastify-js/1.12.0/toastify.css" integrity="sha512-kT0v1BxcibEO2Yc+6Z3W1gNsN+2cZ/U6uITqHhIJl8SAvt9vpO8llugdCPXA7cCnp8G1xbuSqHNMRaR3Zlz9yA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body class="bg-gray-100">
+    <h1 class=" ml-8 font-bold mt-4">Stored Tasks</h1>
+    <p id="see-stored-task" class="ml-8 cursor-pointer text-sm my-4 undeline text-blue-300">See stored tasks</p>
+    <div id="stored-task" class="flex gap-4 ml-8 mr-4 opacity-0"></div>
+    <div class="container w-full flex justify-center items-center mt-8">
+        <div class="w-3/4 bg-white p-8 rounded-lg shadow-lg">
+            <p class="text-center" id="progress-text">In Progress</p>
+            <div class="relative h-8 bg-gray-200 rounded-full">
+                <div class="absolute h-full bg-green-500 rounded-full" id="progress-bar" style="width: 0;"></div>
+                <div class="flex justify-center items-center h-full text-xs font-semibold"></div>
+            </div>
+            <div class="flex justify-between items-center mt-4">
+                <div class="text-sm text-gray-500" id="progress-percentage">0%</div>
+                <div class="flex items-center gap-4">
+                    <button class="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600" id="restart-button">Restart</button>
+                    <button class="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600" id="cancel-button">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="./bulqsoft.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastify-js/1.12.0/toastify.js" integrity="sha512-ZHzbWDQKpcZxIT9l5KhcnwQTidZFzwK/c7gpUUsFvGjEsxPusdUCyFxjjpc7e/Wj7vLhfMujNx7COwOmzbn+2w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</body>
+</html>
